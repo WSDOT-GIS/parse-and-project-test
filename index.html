@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title></title>
+	<link href="//js.arcgis.com/3.7compact/js/esri/css/esri.css" rel="stylesheet" />
+	<style>
+		html, body, #map, .map.container {
+			padding: 0;
+			margin: 0;
+			height: 100%;
+		}
+	</style>
+	<script>
+		var dojoConfig = {
+			async: true,
+			packages: [
+				{
+					name: "terraformer",
+					location: "/./Scripts/Terraformer",
+					main: "terraformer.min"
+				},
+				{
+					name: "terraformer-wkt-parser",
+					location: "/./Scripts/terraformer-wkt-parser",
+					main: "terraformer-wkt-parser.min"
+				}
+			]
+		};
+	</script>
+	<script src="//js.arcgis.com/3.7compact/init.js"></script>
+	<script src="Scripts/main.js"></script>
+</head>
+<body>
+	<div id="map"></div>
+</body>
+</html>
