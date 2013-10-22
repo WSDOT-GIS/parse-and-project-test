@@ -12,11 +12,29 @@
 	</style>
 	<script>
 		var dojoConfig = {
+			paths: {
+				use: "//cdnjs.cloudflare.com/ajax/libs/use.js/0.2.0/use.min",
+				proj4js: "//cdnjs.cloudflare.com/ajax/libs/proj4js/1.1.0/"
+			},
+			packages: [
+				{
+					name: "proj4js",
+					location: "proj4js",
+					main: "proj4js-compressed"
+				}
+			],
+			use: {
+				"proj4js/proj4js-compressed": {
+					attach: function () {
+						return Proj4js;
+					}
+				}
+			},
 			async: true
 		};
 	</script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/proj4js/1.1.0/proj4js-compressed.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/proj4js/1.1.0/defs/GOOGLE.min.js"></script>
+	<!--<script src="//cdnjs.cloudflare.com/ajax/libs/proj4js/1.1.0/proj4js-compressed.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/proj4js/1.1.0/defs/GOOGLE.min.js"></script>-->
 	<script src="Scripts/Terraformer/terraformer.js"></script>
 	<script src="Scripts/terraformer-wkt-parser/terraformer-wkt-parser.js"></script>
 	<script src="Scripts/terraformer-arcgis-parser/terraformer-arcgis-parser.js"></script>

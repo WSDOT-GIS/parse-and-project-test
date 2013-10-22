@@ -1,5 +1,5 @@
 ﻿/*global require, Terraformer, Proj4js */
-require(["esri/map", "esri/geometry/jsonUtils"], function (Map, jsonUtils) {
+require(["esri/map", "esri/geometry/jsonUtils", "use!proj4js"], function (Map, jsonUtils, Proj4js) {
 	"use strict";
 
 	/** Converts wkt into an ArcGIS polyline.
