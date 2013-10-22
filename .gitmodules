@@ -7,3 +7,6 @@
 [submodule "Scripts/terraformer-arcgis-parser"]
 	path = Scripts/terraformer-arcgis-parser
 	url = https://github.com/Esri/terraformer-arcgis-parser.git
+[submodule "Scripts/client-projection"]
+	path = Scripts/client-projection
+	url = https://github.com/WSDOT-GIS/ArcGIS-JS-Client-Projection.git

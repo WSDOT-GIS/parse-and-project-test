@@ -3,11 +3,10 @@ require([
 	"esri/map",
 	"esri/geometry/jsonUtils",
 	"use!proj4js",
-	"proj4js/defs/GOOGLE.min",
 	"use!terraformer",
 	"use!terraformer-wkt-parser",
 	"use!terraformer-arcgis-parser"
-], function (Map, jsonUtils, Proj4js, prjGoogle, Terraformer, TFWkt, TFAgs) {
+], function (Map, jsonUtils, Proj4js, Terraformer, TFWkt, TFAgs) {
 	"use strict";
 
 	/** Converts wkt into an ArcGIS polyline.
@@ -43,8 +42,10 @@ require([
 		showAttribution: true
 	});
 
-	// Setup state plane projection system for Proj4js.
+	// Setup state plane and WGS84 Web Mercator Aux. Sphere projection systems for Proj4js.
 	Proj4js.defs["EPSG:2927"] = "+proj=lcc +lat_1=47.33333333333334 +lat_2=45.83333333333334 +lat_0=45.33333333333334 +lon_0=-120.5 +x_0=500000.0001016001 +y_0=0 +ellps=GRS80 +to_meter=0.3048006096012192 +no_defs";
+	Proj4js.defs["EPSG:3857"] = "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +wktext  +no_defs";
+	Proj4js.defs["EPSG:102100"] = Proj4js.defs["EPSG:3857"];
 
 
 	map.on("load", function (/*map*/) {
