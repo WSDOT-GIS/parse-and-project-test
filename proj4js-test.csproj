@@ -70,6 +70,8 @@
   <ItemGroup>
     <Content Include="index.html" />
     <Content Include="Scripts\main.js" />
+    <Content Include="Scripts\terraformer-arcgis-parser\terraformer-arcgis-parser.js" />
+    <Content Include="Scripts\terraformer-arcgis-parser\terraformer-arcgis-parser.min.js" />
     <Content Include="Scripts\terraformer-wkt-parser\terraformer-wkt-parser.js" />
     <Content Include="Scripts\terraformer-wkt-parser\terraformer-wkt-parser.min.js" />
     <Content Include="Scripts\Terraformer\terraformer.js" />
