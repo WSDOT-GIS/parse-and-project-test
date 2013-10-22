@@ -1,6 +1,9 @@
-[submodule "Scripts/terraformer-wkt-parser"]
-	path = Scripts/terraformer-wkt-parser
-	url = https://github.com/Esri/terraformer-wkt-parser.git
 [submodule "Scripts/Terraformer"]
 	path = Scripts/Terraformer
 	url = https://github.com/Esri/Terraformer.git
+[submodule "Scripts/terraformer-wkt-parser"]
+	path = Scripts/terraformer-wkt-parser
+	url = https://github.com/Esri/terraformer-wkt-parser.git
+[submodule "Scripts/terraformer-arcgis-parser"]
+	path = Scripts/terraformer-arcgis-parser
+	url = https://github.com/Esri/terraformer-arcgis-parser.git

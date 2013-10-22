@@ -12,21 +12,11 @@
 	</style>
 	<script>
 		var dojoConfig = {
-			async: true,
-			packages: [
-				{
-					name: "terraformer",
-					location: "/./Scripts/Terraformer",
-					main: "terraformer.min"
-				},
-				{
-					name: "terraformer-wkt-parser",
-					location: "/./Scripts/terraformer-wkt-parser",
-					main: "terraformer-wkt-parser.min"
-				}
-			]
+			async: true
 		};
 	</script>
+	<script src="Scripts/Terraformer/terraformer.min.js"></script>
+	<script src="Scripts/terraformer-wkt-parser/terraformer-wkt-parser.js"></script>
 	<script src="//js.arcgis.com/3.7compact/init.js"></script>
 	<script src="Scripts/main.js"></script>
 </head>
