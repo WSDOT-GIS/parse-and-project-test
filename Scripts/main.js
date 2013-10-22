@@ -2,11 +2,15 @@
 require([
 	"esri/map",
 	"esri/geometry/jsonUtils",
+	"esri/graphic",
+	"esri/symbols/SimpleLineSymbol",
+	"dojo/_base/Color",
 	"use!proj4js",
+	"clientProjection",
 	"use!terraformer",
 	"use!terraformer-wkt-parser",
 	"use!terraformer-arcgis-parser"
-], function (Map, jsonUtils, Proj4js, Terraformer, TFWkt, TFAgs) {
+], function (Map, jsonUtils, Graphic, SimpleLineSymbol, Color, Proj4js, clientProjection, Terraformer) {
 	"use strict";
 
 	/** Converts wkt into an ArcGIS polyline.
@@ -17,9 +21,9 @@ require([
 	function wktToGeometry(wkt, wkid) {
 		var polyline;
 		// Parse into a terraformer primitive.
-		polyline = TFWkt.parse(wkt);
+		polyline = Terraformer.WKT.parse(wkt);
 		// Convert primitive into a polyline object. (Regular JS object)
-		polyline = TFAgs.convert(polyline);
+		polyline = Terraformer.ArcGIS.convert(polyline);
 
 		// Update the spatail reference if one was provided. Otherwise use default.
 		if (wkid) {
@@ -49,11 +53,22 @@ require([
 
 
 	map.on("load", function (/*map*/) {
-		var wkt, polyline;
+		var wkt, polyline, srcPrj, destPrj, symbol, graphic;
 
-		wkt = 'MULTILINESTRING((1223237.061147753 968557.1533555186,1222895.6525480265 968550.1102739442,1222895.6525480265 968550.1102739442,1222554.8724909977 968542.8796450214,1222545.3402694887 968542.9844187635))';
+		srcPrj = new Proj4js.Proj("EPSG:2927");
+		destPrj = new Proj4js.Proj("EPSG:3857");
+
+		wkt = "MULTILINESTRING ((1223237.0611477529 968557.15335551859, 1222895.6525480265 968550.11027394421, 1222895.6525480265 968550.11027394421, 1222554.8724909977 968542.8796450214, 1222545.3402694887 968542.98441876355))"
 		polyline = wktToGeometry(wkt);
 		console.log(polyline);
+		polyline = clientProjection.projectEsriGeometry(polyline, srcPrj, destPrj, jsonUtils.fromJson);
+		console.log(polyline);
 
+		symbol = new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([255, 0, 0]), 2);
+		graphic = new Graphic(polyline, symbol);
+
+		map.graphics.add(graphic);
+
+		map.setExtent(polyline.getExtent());
 	});
 });
