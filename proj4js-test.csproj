@@ -41,12 +41,6 @@
     <Content Include="Scripts\main.min.js.map">
       <DependentUpon>main.js</DependentUpon>
     </Content>
-    <None Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
-    <None Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="index.html" />
@@ -57,7 +51,6 @@
     <Content Include="Scripts\terraformer-wkt-parser\terraformer-wkt-parser.min.js" />
     <Content Include="Scripts\Terraformer\terraformer.js" />
     <Content Include="Scripts\Terraformer\terraformer.min.js" />
-    <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
