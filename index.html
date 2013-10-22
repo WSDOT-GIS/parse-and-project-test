@@ -21,6 +21,22 @@
 					name: "proj4js",
 					location: "proj4js",
 					main: "proj4js-compressed"
+				},
+				{
+					name: "terraformer",
+					location: "/./Scripts/Terraformer",
+					main: "terraformer.min"
+				},
+				{
+					name: "terraformer-wkt-parser",
+					location: "/./Scripts/terraformer-wkt-parser",
+					main: "terraformer-wkt-parser.min"
+				}
+				,
+				{
+					name: "terraformer-arcgis-parser",
+					location: "/./Scripts/terraformer-arcgis-parser",
+					main: "terraformer-arcgis-parser.min"
 				}
 			],
 			use: {
@@ -28,16 +44,35 @@
 					attach: function () {
 						return Proj4js;
 					}
+				},
+				"proj4js/defs/GOOGLE.min": {
+					deps: ["use!proj4js"],
+					attach: function (Proj4js) {
+						return Proj4js.defs["GOOGLE"];
+					}
+				},
+				"terraformer/terraformer.min": {
+					attach: function () {
+						return Terraformer;
+					}
+				},
+				"terraformer-wkt-parser/terraformer-wkt-parser.min": {
+					deps: ["use!terraformer"],
+					attach: function (Terraformer) {
+						return Terraformer.WKT;
+					}
+				},
+				"terraformer-arcgis-parser/terraformer-arcgis-parser.min": {
+					deps: ["use!terraformer"],
+					attach: function (Terraformer) {
+						return Terraformer.ArcGIS;
+					}
 				}
+
 			},
 			async: true
 		};
 	</script>
-	<!--<script src="//cdnjs.cloudflare.com/ajax/libs/proj4js/1.1.0/proj4js-compressed.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/proj4js/1.1.0/defs/GOOGLE.min.js"></script>-->
-	<script src="Scripts/Terraformer/terraformer.js"></script>
-	<script src="Scripts/terraformer-wkt-parser/terraformer-wkt-parser.js"></script>
-	<script src="Scripts/terraformer-arcgis-parser/terraformer-arcgis-parser.js"></script>
 	<script src="//js.arcgis.com/3.7compact/init.js"></script>
 	<script src="Scripts/main.js"></script>
 </head>

@@ -1,5 +1,13 @@
 ﻿/*global require, Terraformer, Proj4js */
-require(["esri/map", "esri/geometry/jsonUtils", "use!proj4js"], function (Map, jsonUtils, Proj4js) {
+require([
+	"esri/map",
+	"esri/geometry/jsonUtils",
+	"use!proj4js",
+	"proj4js/defs/GOOGLE.min",
+	"use!terraformer",
+	"use!terraformer-wkt-parser",
+	"use!terraformer-arcgis-parser"
+], function (Map, jsonUtils, Proj4js, prjGoogle, Terraformer, TFWkt, TFAgs) {
 	"use strict";
 
 	/** Converts wkt into an ArcGIS polyline.
@@ -10,9 +18,9 @@ require(["esri/map", "esri/geometry/jsonUtils", "use!proj4js"], function (Map, j
 	function wktToGeometry(wkt, wkid) {
 		var polyline;
 		// Parse into a terraformer primitive.
-		polyline = Terraformer.WKT.parse(wkt);
+		polyline = TFWkt.parse(wkt);
 		// Convert primitive into a polyline object. (Regular JS object)
-		polyline = Terraformer.ArcGIS.convert(polyline);
+		polyline = TFAgs.convert(polyline);
 
 		// Update the spatail reference if one was provided. Otherwise use default.
 		if (wkid) {
